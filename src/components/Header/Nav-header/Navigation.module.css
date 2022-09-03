@@ -1,0 +1,30 @@
+.block {
+  width: 330px;
+  display: flex;
+  list-style: none;
+}
+
+.b1,
+.b2,
+.b3 {
+  color: #0c121c;
+  font-size: 11px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 1px 0px 0px rgb(0, 0, 0);
+  padding: 30px 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.b1:hover {
+  background-color: #e9ecec;
+}
+
+.b2:hover {
+  background-color: #e9ecec;
+}
+
+.b3:hover {
+  background-color: #e9ecec;
+}
+

@@ -1,0 +1,63 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+
+}
+
+.slider_line {
+  max-width: 2000;
+  display: flex;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  transition: all 1s;
+}
+
+.block_Img {
+  width: 100vw;
+  max-width: 2000px;
+  height: auto;
+  display: block;
+}
+
+.block_Img img {
+  width: 100%;
+  display: block;
+  height: auto;
+
+}
+
+.next {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 2px solid rgb(255, 255, 255);
+  transform: rotate(45deg);
+  top: 50%;
+  right: 30px;
+  cursor: pointer;
+}
+.prev {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 2px solid rgb(255, 255, 255);
+  transform: rotate(-135deg);
+  top: 50%;
+  left: 30px;
+  cursor: pointer;
+}
+/* .stop{
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  z-index: 50;
+} */

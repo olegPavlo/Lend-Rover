@@ -1,0 +1,31 @@
+.block {
+  width: 180px;
+  height: 42px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom: 5%;
+  left: 125px;
+  z-index: 50;
+
+  outline: 1px solid red;
+}
+
+.cnp {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #eff0f0;
+  font-size: 25px;
+  color: #eff0f0;
+  border-radius: 50%;
+  transition: all .4s;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cnp:hover {
+  background-color: rgba(255, 255, 255, 0.3)
+}

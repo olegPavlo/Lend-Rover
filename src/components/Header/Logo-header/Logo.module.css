@@ -1,0 +1,16 @@
+.blokLogo {
+  width: 135px;
+  height: 72;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+cursor: pointer;
+}
+
+.blokLogo img {
+  width: 87px;
+  height: auto;
+
+}
