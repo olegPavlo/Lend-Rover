@@ -32,7 +32,7 @@ const Slider: FC<ISlider> = () => {
 
   let [widthOffset, setWidthOffset] = useState(0)
   let [offset, setOffset] = useState(widthOffset);
-  const [play, setPlay] = useState(true);
+  const [play, setPlay] = useState(false);
 
   function Timer() {
     if (offset >= -300) {
@@ -43,7 +43,7 @@ const Slider: FC<ISlider> = () => {
     }
   }
 
-  const timer = setTimeout(Timer, 3000)
+  const timer = setTimeout(Timer, 10000)
 
   const moveNext = () => {
     setWidthOffset((widthOffset) => {

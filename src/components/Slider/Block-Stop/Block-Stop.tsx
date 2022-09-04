@@ -22,7 +22,7 @@ const Block_Stop: FC<IStop> = ({ play, setPlay, timer, Timer }) => {
       clearTimeout(timer)
     } else {
       setPlay(false)
-      setTimeout(Timer, 3000)
+      setTimeout(Timer, 10000)
     }
   }
 
