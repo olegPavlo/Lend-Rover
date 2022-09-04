@@ -2,17 +2,19 @@ import React, { FC, useEffect, useState } from 'react'
 import bs from './Block-Stop.module.css'
 import { BsPauseFill } from "react-icons/bs";
 import { BsCaretRight } from "react-icons/bs";
-import { Timer } from '../setTimeout';
 
 interface IStop {
   offset: number,
   setOffset: any,
   switchOff: () => void,
   timer: any,
+  Timer: () => void,
+  play: boolean,
+  setPlay: any
 }
 
-const Block_Stop: FC<IStop> = ({ offset, setOffset, timer }) => {
-  const [play, setPlay] = useState(false);
+const Block_Stop: FC<IStop> = ({ play, setPlay, timer, Timer }) => {
+
 
   const tooglePlay = () => {
     if (!play) {
@@ -20,15 +22,7 @@ const Block_Stop: FC<IStop> = ({ offset, setOffset, timer }) => {
       clearTimeout(timer)
     } else {
       setPlay(false)
-
-      setTimeout(() => {
-        if (offset >= -300) {
-          setOffset(offset += -100)
-        }
-        if (offset === -300) {
-          setOffset(0);
-        }
-      }, 3000)
+      setTimeout(Timer, 3000)
     }
   }
 

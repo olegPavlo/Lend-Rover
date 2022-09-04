@@ -1,6 +1,5 @@
 import React, { useState, FC, useRef, useEffect } from 'react'
 import s from './Slider.module.css';
-import { Timer } from './setTimeout'
 
 import Slider_Item from './Slider-Item/Slider-Item'
 
@@ -15,7 +14,6 @@ interface ILineSlider {
   img: string,
   title: string,
   text: string,
-  anchor: string | number
 }
 interface ISlider {
   myInterval: () => any
@@ -26,14 +24,15 @@ interface ISlider {
 const Slider: FC<ISlider> = () => {
 
   const [imgSlider, setImgSlider] = useState<ILineSlider[]>([
-    { id: 1, img: img_1, title: 'Ноовый Renge Rover', text: 'непревзойдённая роскошь и совершенсво', anchor: 1 },
-    { id: 2, img: img_2, title: 'Lend Rover Defender', text: 'способен на многое. теперь доступен в вариации defender 130', anchor: 2 },
-    { id: 3, img: img_3, title: 'Lend Rover Defender', text: 'способен на многое. теперь доступен в вариации defender 130', anchor: 3 },
+    { id: 1, img: img_1, title: 'Ноовый Renge Rover', text: 'непревзойдённая роскошь и совершенсво' },
+    { id: 2, img: img_2, title: 'Lend Rover Defender', text: 'способен на многое. теперь доступен в вариации defender 130' },
+    { id: 3, img: img_3, title: 'Lend Rover Defender', text: 'способен на многое. теперь доступен в вариации defender 130' },
 
   ]);
 
-  const [toogleClass, setToggleClass] = useState(false)
-  let [offset, setOffset] = useState(0);
+  let [widthOffset, setWidthOffset] = useState(0)
+  let [offset, setOffset] = useState(widthOffset);
+  const [play, setPlay] = useState(true);
 
   function Timer() {
     if (offset >= -300) {
@@ -44,38 +43,57 @@ const Slider: FC<ISlider> = () => {
     }
   }
 
-
   const timer = setTimeout(Timer, 3000)
 
   const moveNext = () => {
-    setOffset(offset += -100)
-    clearTimeout(timer)
+    setWidthOffset((widthOffset) => {
+      const newWidth = widthOffset - 100
+      return newWidth
+    })
+
   }
   const movePrev = () => {
-    setOffset(offset += 100)
-    clearTimeout(timer)
+    setWidthOffset((widthOffset) => {
+      const newWidth = widthOffset + 100
+      return newWidth
+    })
   }
 
   return (
     <div className={s.wrapper}>
-      <ul className={s.slider_line} style={{
-        left: `${offset}%`
-      }}>
 
-        {imgSlider.map(elem =>
-          <li key={elem.id}>
-            <Slider_Item {...elem} />
-          </li>
-        )}
-      </ul>
+      {!play ?
+        <ul className={s.slider_line} style={{
+          left: `${offset}%`
+        }}>
+          {imgSlider.map(elem =>
+            <li key={elem.id}>
+              <Slider_Item img={elem.img} title={elem.title} text={elem.text} />
+            </li>
+          )}
+        </ul>
+        :
+        <div>
+          <ul className={s.slider_line} style={{
+            left: `${widthOffset}%`
+          }}>
+            {imgSlider.map(elem =>
+              <li key={elem.id}>
+                <Slider_Item img={elem.img} title={elem.title} text={elem.text} />
+              </li>
+            )}
 
-      <div className={offset === -200 ? '' : s.next}
-        onClick={moveNext}></div>
+          </ul>
 
-      <div className={offset === 0 ? '' : s.prev}
-        onClick={movePrev}></div>
+          <div className={widthOffset === -200 ? '' : s.next}
+            onClick={moveNext}></div>
 
-      <Block_Stop offset={offset} setOffset={setOffset} timer={timer} switchOff={function (): void {
+          <div className={widthOffset === 0 ? '' : s.prev}
+            onClick={movePrev}></div>
+        </div>
+      }
+
+      <Block_Stop offset={offset} setOffset={setOffset} Timer={Timer} play={play} setPlay={setPlay} timer={timer} switchOff={function (): void {
         throw new Error('Function not implemented.');
       }} />
     </div>
@@ -83,17 +101,4 @@ const Slider: FC<ISlider> = () => {
 }
 
 export default Slider
-
-
-function setInter(setInter: any) {
-  throw new Error('Function not implemented.')
-}
-
-function timer(timer: any) {
-  throw new Error('Function not implemented.');
-}
-
-function setElem(arg0: number) {
-  throw new Error('Function not implemented.');
-}
 
