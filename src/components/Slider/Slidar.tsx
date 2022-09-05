@@ -35,10 +35,13 @@ const Slider: FC<ISlider> = () => {
   const [play, setPlay] = useState(false);
 
   function Timer() {
-    if (offset >= -300) {
-      setOffset(offset += -100)
+    if (offset >= -200) {
+      setOffset(offset => {
+        return offset -= 100
+      })
+      console.log(offset)
     }
-    if (offset === -300) {
+    if (offset === -200) {
       setOffset(0);
     }
   }
